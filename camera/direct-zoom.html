@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-zoom-direct',{
+        category: 'SimplTrack',
+        color: '#E67E22',
+        defaults: {
+            name: {value:""},
+            camera: {value:"", type:"simpltrack-config", required:true},
+            speed: {value:4, validate: function(v) { var n = Number(v); if (isNaN(n)) { return false; } return n >= 0 && n <= 7; } },
+            position: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        label: function() {
+            return this.name||"SimplTrack Zoom";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-zoom-direct">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camera"><i class="fa fa-camera"></i> Camera</label>
+        <input type="text" id="node-input-camera">
+    </div>
+    <div class="form-row">
+        <label for="node-input-speed"><i class="fa fa-search-plus"></i> Speed</label>
+        <input type="text" id="node-input-speed" style="width: 50px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-position"><i class="fa fa-dot-circle-o"></i> Position</label>
+        <input type="text" id="node-input-position" style="width: 100px;">
+    </div>
+    <div class="form-tips">
+        <b>Note:</b> Position is required. Values can be overridden by `msg.position`.
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-zoom-direct">
+    <p>Moves a SimplTrack camera zoom to a specific position.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>position <span class="property-type">string</span></dt>
+        <dd>Overrides the configured zoom position (hexadecimal).</dd>
+        <dt>speed <span class="property-type">number</span></dt>
+        <dd>Overrides the configured zoom speed (0-7).</dd>
+    </dl>
+</script>

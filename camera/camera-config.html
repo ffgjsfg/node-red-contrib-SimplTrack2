@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-config',{
+        category: 'config',
+        defaults: {
+            name: {value:""},
+            ip: {value:"", required:true},
+            httpPort: {value:8080, validate: RED.validators.number()},
+            viscaPort: {value:5678, validate: RED.validators.number()}
+        },
+        label: function() {
+            return this.name||"SimplTrack @" + this.ip;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-ip"><i class="fa fa-server"></i> IP Address</label>
+        <input type="text" id="node-config-input-ip" placeholder="e.g. 192.168.1.100">
+    </div>
+    <div class="form-row">
+    <label for="node-config-input-httpPort"><i class="fa fa-plug"></i> HTTP Port</label>
+    <input type="number" id="node-config-input-httpPort" min="1" max="65535" placeholder="8080">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-viscaPort"><i class="fa fa-exchange"></i> VISCA Port</label>
+        <input type="number" id="node-config-input-viscaPort" min="1" max="65535" placeholder="5678">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-config">
+    <p>Configuration node for a SimplTrack camera. Stores the IP address and ports used for HTTP and VISCA control.</p>
+    <h3>Details</h3>
+    <dl>
+        <dt>IP Address</dt>
+        <dd>The IP address of the camera.</dd>
+        <dt>HTTP Port</dt>
+    <dd>The port used for all HTTP-based control commands (default 8080).</dd>
+        <dt>VISCA Port</dt>
+        <dd>The port used for VISCA over IP commands (default 5678).</dd>
+    </dl>
+</script>

@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-ptz-absolute',{
+        category: 'SimplTrack',
+        color: '#E67E22',
+        defaults: {
+            name: {value:""},
+            camera: {value:"", type:"simpltrack-config", required:true},
+            panspeed: {value:10, validate: function(v) { var n = Number(v); if (isNaN(n)) { return false; } return n >= 1 && n <= 24; } },
+            tiltspeed: {value:10, validate: function(v) { var n = Number(v); if (isNaN(n)) { return false; } return n >= 1 && n <= 20; } },
+            panpos: {value:""},
+            tiltpos: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        label: function() {
+            return this.name||"SimplTrack PTZ ABS";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-ptz-absolute">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camera"><i class="fa fa-camera"></i> Camera</label>
+        <input type="text" id="node-input-camera">
+    </div>
+    <div class="form-row">
+        <label for="node-input-panspeed"><i class="fa fa-arrows-h"></i> Pan Speed</label>
+        <input type="text" id="node-input-panspeed" style="width: 50px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tiltspeed"><i class="fa fa-arrows-v"></i> Tilt Speed</label>
+        <input type="text" id="node-input-tiltspeed" style="width: 50px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-panpos"><i class="fa fa-dot-circle-o"></i> Pan Position</label>
+        <input type="text" id="node-input-panpos" style="width: 100px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tiltpos"><i class="fa fa-dot-circle-o"></i> Tilt Position</label>
+        <input type="text" id="node-input-tiltpos" style="width: 100px;">
+    </div>
+    <div class="form-tips">
+        <b>Note:</b> Pan and Tilt position are required. Values can be overridden by `msg.panpos` and `msg.tiltpos`.
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-ptz-absolute">
+    <p>Moves a SimplTrack camera to an absolute pan and tilt position.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>panpos <span class="property-type">string</span></dt>
+        <dd>Overrides the configured pan position (hexadecimal).</dd>
+        <dt>tiltpos <span class="property-type">string</span></dt>
+        <dd>Overrides the configured tilt position (hexadecimal).</dd>
+        <dt>panspeed <span class="property-type">number</span></dt>
+        <dd>Overrides the configured pan speed (1-24).</dd>
+        <dt>tiltspeed <span class="property-type">number</span></dt>
+        <dd>Overrides the configured tilt speed (1-20).</dd>
+    </dl>
+</script>

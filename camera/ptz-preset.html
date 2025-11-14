@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-ptz-preset',{
+        category: 'SimplTrack',
+        color: '#E67E22',
+        defaults: {
+            name: {value:""},
+            camera: {value:"", type:"simpltrack-config", required:true},
+            action: {value:"POSCALL"},
+            position: {value:"", validate:RED.validators.number()}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        label: function() {
+            return this.name||"SimplTrack Preset";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-ptz-preset">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camera"><i class="fa fa-camera"></i> Camera</label>
+        <input type="text" id="node-input-camera">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select id="node-input-action">
+            <option value="POSCALL">Call</option>
+            <option value="POSSET">Set</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-position"><i class="fa fa-dot-circle-o"></i> Position</label>
+        <input type="text" id="node-input-position" style="width: 100px;">
+    </div>
+    <div class="form-tips">
+        <b>Note:</b> Action and Position are required. Values can be overridden by `msg.action` and `msg.position`.
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-ptz-preset">
+    <p>Sets or calls a preset position on a SimplTrack camera.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>action <span class="property-type">string</span></dt>
+        <dd>Overrides the configured action. Can be <code>POSSET</code> or <code>POSCALL</code>.</dd>
+        <dt>position <span class="property-type">number</span></dt>
+        <dd>Overrides the configured preset position number.</dd>
+    </dl>
+</script>

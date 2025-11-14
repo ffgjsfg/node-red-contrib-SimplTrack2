@@ -1,0 +1,26 @@
+{
+    "name": "node-red-contrib-simpletrack-camera",
+    "version": "0.0.1",
+    "description": "A Node-RED palette to control a simpletrack camera.",
+    "dependencies": {
+        "request": "2.88.2"
+    },
+    "keywords": [
+        "node-red",
+        "camera",
+        "ptz"
+    ],
+    "node-red": {
+        "nodes": {
+            "simpltrack-config": "camera/camera-config.js",
+            "simpltrack-ptz-control": "camera/ptz-control.js",
+            "simpltrack-ptz-absolute": "camera/ptz-absolute.js",
+            "simpltrack-ptz-reset": "camera/ptz-reset.js",
+            "simpltrack-ptz-home": "camera/ptz-home.js",
+            "simpltrack-ptz-preset": "camera/ptz-preset.js",
+            "simpltrack-zoom-direct": "camera/direct-zoom.js",
+            "simpltrack-ptz-relative": "camera/ptz-relative.js",
+            "simpltrack-visca-tracking": "camera/visca-tracking.js"
+        }
+    }
+}

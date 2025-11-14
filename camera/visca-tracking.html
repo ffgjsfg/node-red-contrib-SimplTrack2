@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-visca-tracking',{
+        category: 'SimplTrack',
+        color: '#E67E22',
+        defaults: {
+            name: {value:""},
+            camera: {value:"", type:"simpltrack-config", required:true},
+            action: {value:"enable"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        label: function() {
+            return this.name || "SimplTrack VISCA Tracking";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-visca-tracking">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camera"><i class="fa fa-camera"></i> Camera</label>
+        <input type="text" id="node-input-camera">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+        <select id="node-input-action">
+            <option value="enable">Enable Tracking</option>
+            <option value="disable">Disable Tracking</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-visca-tracking">
+    <p>Enables or disables camera tracking/framing using VISCA over IP.</p>
+    <h3>Details</h3>
+    <p>This node sends a VISCA command over a TCP socket to the camera using the VISCA port defined in the SimplTrack Camera Config node (default 5678).</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>action <span class="property-type">string</span></dt>
+        <dd>Overrides the configured action. Can be <code>enable</code> or <code>disable</code>.</dd>
+    </dl>
+</script>

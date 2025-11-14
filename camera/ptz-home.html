@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simpltrack-ptz-home',{
+        category: 'SimplTrack',
+        color: '#E67E22',
+        defaults: {
+            name: {value:""},
+            camera: {value:"", type:"simpltrack-config", required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "camera.png",
+        label: function() {
+            return this.name||"SimplTrack PTZ Home";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simpltrack-ptz-home">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-camera"><i class="fa fa-camera"></i> Camera</label>
+        <input type="text" id="node-input-camera">
+    </div>
+    <div class="form-tips">
+        This node will move the camera to its home position.
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simpltrack-ptz-home">
+    <p>Moves a SimplTrack camera to its home position.</p>
+</script>
