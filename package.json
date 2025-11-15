@@ -1,7 +1,7 @@
 {
     "name": "node-red-contrib-simpletrack-camera",
     "version": "0.0.1",
-    "description": "A Node-RED palette to control a simpletrack camera.",
+    "description": "A Node-RED palette to control a SimplTrack camera.",
     "dependencies": {
         "request": "2.88.2"
     },
@@ -24,3 +24,4 @@
         }
     }
 }
+
